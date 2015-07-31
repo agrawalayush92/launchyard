@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!-- <script>
+	 var text = require('./launchyard/sample.json'); 
+	var text = JSON.parse("./launchyard/sample.json");
+	console.log(text);
+	</script> -->
+	
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#div1").load("./sample.json");
+    });
+});
+</script>
+</head>
+<body>
+
+<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+
+<button>Get External Content</button>
+
+</body>
+</html> 

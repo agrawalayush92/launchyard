@@ -1,0 +1,10 @@
+li{
+	border-style : solid;
+	border-colour : blue;
+}
+img{
+	margin: 5px;
+    padding: 5px;
+    border: 1px solid;
+    height: auto;
+}

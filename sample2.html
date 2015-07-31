@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="sample2.css">
+	<!-- <script>
+	 var text = require('./launchyard/sample.json'); 
+	var text = JSON.parse("./launchyard/sample.json");
+	console.log(text);
+	</script> -->
+	<form>
+<input type="text" id="myText" name="search">
+<button onclick="myFunction()">Search</button>
+</form>
+</head>
+<body>
+
+<ol id="list">
+	<p>Ordered list of elements are :</p>
+</ol>
+<p id="name"></p>
+<p id="designation"></p>
+<p id="image"></p>
+<div id="myDiv"></div>
+<script>
+	var json_obj=[
+  {
+    "name": "Sanchez Hopkins",
+    "designation": "Founder and CEO",
+    "avatar": "http://coenraets.org/apps/angular-directory/pics/james_king.jpg"
+  },
+  {
+    "name": "Abigail Shields",
+    "designation": "Software Engineer",
+    "avatar": "http://coenraets.org/apps/angular-directory/pics/james_king.jpg"
+  },
+  {
+    "name": "Juliette Thompson",
+    "designation": "Frontend engineer",
+    "avatar": "http://coenraets.org/apps/angular-directory/pics/james_king.jpg"
+  },
+  {
+    "name": "Marks Whitehead",
+    "designation": "Accountant",
+    "avatar": "http://coenraets.org/apps/angular-directory/pics/james_king.jpg"
+  },
+  {
+    "name": "Ratliff Murphy",
+    "designation": "Software Engineer",
+    "avatar": "http://coenraets.org/apps/angular-directory/pics/james_king.jpg"
+  },
+  {
+    "name": "Alyce Hoffman",
+    "designation": "Frontend engineer",
+    "avatar": "http://coenraets.org/apps/angular-directory/pics/james_king.jpg"
+  },
+  {
+    "name": "Bauer Cantrell",
+    "designation": "Advisor",
+    "avatar": "http://coenraets.org/apps/angular-directory/pics/james_king.jpg"
+  },
+  {
+    "name": "Talley Hayden",
+    "designation": "Software Engineer",
+    "avatar": "http://coenraets.org/apps/angular-directory/pics/james_king.jpg"
+  },
+  {
+    "name": "Gonzalez Hurley",
+    "designation": "Lead Designer",
+    "avatar": "http://coenraets.org/apps/angular-directory/pics/james_king.jpg"
+  },
+  {
+    "name": "Trina Bishop",
+    "designation": "Designer",
+    "avatar": "http://coenraets.org/apps/angular-directory/pics/james_king.jpg"
+  }
+ ];
+	var myArr = [];
+	var i;
+	for(i=0;i<json_obj.length;i++)
+	{
+		myArr[i] = json_obj[i]["name"];
+	}
+	var x = myArr.sort();
+	
+	for(i=0;i<json_obj.length;i++)
+	{
+	var para = document.createElement("LI");
+	liIdName = "id"+(i+1);
+	para.setAttribute('id',liIdName);
+	//alert(liIdName);
+	var node = document.createTextNode("name :"+myArr[i]);
+	para.appendChild(node);
+	para.appendChild(document.createElement("br"));
+	var index = 0;
+	for(var j = 0;j<json_obj.length;j++)
+	{
+		if(json_obj[j]["name"] == myArr[i])
+			{
+				index=j;
+				break;
+			}
+	} // j loop ends
+	node = document.createTextNode("designation:"+json_obj[index]["designation"]);
+	para.appendChild(node);
+	para.appendChild(document.createElement("br"));
+	var DOM_img = document.createElement("img");
+	var image=json_obj[index]["avatar"];
+	DOM_img.src = image;
+	para.appendChild(DOM_img);
+	//node = document.createTextNode("avatar:"+json_obj[index]["avatar"]);
+	//para.appendChild(node);
+	para.appendChild(document.createElement("br"));
+	var element = document.getElementById("list");
+	element.appendChild(para);
+	//document.getElementById("list").innerHTML = myArr;
+	} // i loop ends
+		var count=0;
+		myText.onkeyup = function myFunction()
+		{
+			var fil=document.getElementById("myText").value;
+			for(var i=0;i<myArr.length;i++)
+			{
+				if(myArr[i].search(fil)!==0)
+				{
+					document.getElementById("id"+(i+1)).style.display = "none";
+					count++;
+				}
+				else
+				{
+					count=0;
+				}
+			}
+			if(count==10)
+			{
+				alert(count);
+				var para = document.createElement("p");
+				var input = document.createElement("input");
+				node = document.createTextNode("enter name");
+				para.appendChild(node);
+                input.type = "text";
+                input.name = "member";
+				var ele = document.getElementById("myDiv");
+				ele.appendChild(para);
+				ele.appendChild(input);
+				var btn = document.createElement("BUTTON");
+				var t = document.createTextNode("Add");
+				btn.appendChild(t);
+				ele.appendChild(btn);
+				// Append a line break 
+                ele.appendChild(document.createElement("br"));
+				
+				var para = document.createElement("p");
+				var input = document.createElement("input");
+				node = document.createTextNode("enter designation");
+				para.appendChild(node);
+                input.type = "text";
+                input.name = "member";
+				ele.appendChild(para);
+				ele.appendChild(input);
+				var btn = document.createElement("BUTTON");
+				var t = document.createTextNode("Add");
+				btn.appendChild(t);
+				ele.appendChild(btn);
+                // Append a line break 
+                ele.appendChild(document.createElement("br"));
+			}
+		}
+	</script> 
+<!-- <script>
+$(document).ready(function(){
+
+   $("li").filter()
+
+});
+</script> -->
+</body>
+</html> 
